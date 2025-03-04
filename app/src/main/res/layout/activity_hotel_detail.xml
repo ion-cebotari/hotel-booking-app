@@ -13,9 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:navigationIcon="@drawable/ic_back"
-            app:title="Hotel Details"
-            app:titleTextColor="@android:color/white" />
+            android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar" />
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -38,25 +36,42 @@
 
             <TextView
                 android:id="@+id/hotelName"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:textSize="24sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@id/hotelPrice"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/hotelImage" />
+
+            <TextView
+                android:id="@+id/hotelPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:textColor="@color/design_default_color_primary"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hotelImage" />
 
             <TextView
                 android:id="@+id/hotelLocation"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
                 android:drawablePadding="8dp"
                 android:textSize="16sp"
                 app:drawableStartCompat="@drawable/ic_location"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/hotelName" />
 
             <RatingBar
                 android:id="@+id/ratingBar"
+                style="?android:attr/ratingBarStyleSmall"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -67,62 +82,24 @@
                 app:layout_constraintTop_toBottomOf="@id/hotelLocation" />
 
             <TextView
-                android:id="@+id/hotelPrice"
+                android:id="@+id/availableRooms"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:textColor="@color/design_default_color_primary"
-                android:textSize="20sp"
-                android:textStyle="bold"
+                android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@id/ratingBar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/ratingBar" />
 
             <TextView
-                android:id="@+id/availableRooms"
-                android:layout_width="wrap_content"
+                android:id="@+id/hotelDescription"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_margin="16dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/hotelPrice" />
-
-            <TextView
-                android:id="@+id/descriptionTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Description"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/availableRooms" />
-
-            <TextView
-                android:id="@+id/hotelDescription"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/descriptionTitle" />
-
-            <TextView
-                android:id="@+id/amenitiesTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="16dp"
-                android:text="Amenities"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/hotelDescription" />
-
-            <TextView
-                android:id="@+id/amenitiesList"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="16dp"
-                android:textSize="16sp"
-                app:layout_constraintTop_toBottomOf="@id/amenitiesTitle" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ratingBar" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/checkInLayout"
@@ -131,16 +108,20 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:hint="Check-in Date"
+                app:endIconDrawable="@drawable/ic_calendar"
+                app:endIconMode="custom"
                 app:layout_constraintEnd_toStartOf="@id/checkOutLayout"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/amenitiesList">
+                app:layout_constraintTop_toBottomOf="@id/hotelDescription">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/checkInDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:focusable="false"
                     android:inputType="none" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -150,16 +131,20 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:hint="Check-out Date"
+                app:endIconDrawable="@drawable/ic_calendar"
+                app:endIconMode="custom"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/checkInLayout"
-                app:layout_constraintTop_toBottomOf="@id/amenitiesList">
+                app:layout_constraintTop_toBottomOf="@id/hotelDescription">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/checkOutDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:focusable="false"
                     android:inputType="none" />
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.button.MaterialButton
@@ -167,8 +152,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
-                android:padding="12dp"
                 android:text="Book Now"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/checkInLayout" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

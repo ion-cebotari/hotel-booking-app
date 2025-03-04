@@ -18,22 +18,12 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/price"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/price"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/design_default_color_primary"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/dates"
+            android:id="@+id/checkInDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -44,26 +34,56 @@
             app:layout_constraintTop_toBottomOf="@id/hotelName" />
 
         <TextView
-            android:id="@+id/status"
+            android:id="@+id/checkOutDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginStart="16dp"
+            android:drawablePadding="4dp"
+            android:textSize="14sp"
+            app:drawableStartCompat="@drawable/ic_calendar"
+            app:layout_constraintStart_toEndOf="@id/checkInDate"
+            app:layout_constraintTop_toTopOf="@id/checkInDate" />
+
+        <TextView
+            android:id="@+id/bookingStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="@drawable/status_background"
             android:paddingHorizontal="8dp"
             android:paddingVertical="4dp"
+            android:textColor="@android:color/white"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dates" />
+            app:layout_constraintTop_toTopOf="@id/checkInDate" />
 
-        <TextView
-            android:id="@+id/bookingDate"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:textColor="?android:textColorSecondary"
-            android:textSize="12sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/dates" />
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/checkInDate">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/viewButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:text="View Details" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/cancelButton"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:text="Cancel"
+                android:textColor="@android:color/holo_red_dark"
+                app:strokeColor="@android:color/holo_red_dark" />
+
+        </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
